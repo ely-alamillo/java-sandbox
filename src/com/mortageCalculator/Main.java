@@ -21,7 +21,6 @@ public class Main {
         }
 
 
-
         while (true) {
             System.out.print("Annual interest rate: ");
             annualInterest = Float.parseFloat(scanner.next().trim());
@@ -29,7 +28,6 @@ public class Main {
             if (annualInterest < 1 || annualInterest > 30) continue;
             break;
         }
-
 
 
         while (true) {
