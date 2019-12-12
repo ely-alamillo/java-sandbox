@@ -7,15 +7,39 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        float principalAmt;
+        float annualInterest;
+        int periodInYears;
 
-        System.out.print("Principal: ");
-        float principalAmt = Float.parseFloat(scanner.next().trim());
 
-        System.out.print("Annual interest rate: ");
-        float annualInterest = Float.parseFloat(scanner.next().trim());
+        while (true) {
+            System.out.print("Principal: ");
+            principalAmt = Float.parseFloat(scanner.next().trim());
 
-        System.out.print("Period (Years): ");
-        int periodInYears = Integer.parseInt(scanner.next().trim());
+            if (principalAmt < 1000) continue;
+            break;
+        }
+
+
+
+        while (true) {
+            System.out.print("Annual interest rate: ");
+            annualInterest = Float.parseFloat(scanner.next().trim());
+
+            if (annualInterest < 1 || annualInterest > 30) continue;
+            break;
+        }
+
+
+
+        while (true) {
+            System.out.print("Period (Years): ");
+            periodInYears = Integer.parseInt(scanner.next().trim());
+
+            if (periodInYears > 30) continue;
+            break;
+        }
+
 
         System.out.print("Mortgage: " + calculateMortgage(principalAmt, annualInterest, periodInYears));
 
@@ -29,9 +53,9 @@ public class Main {
         final int totalMonthlyPayments = years * 12;
 
         final double top = monthlyInterestRate * Math.pow((1 + monthlyInterestRate), totalMonthlyPayments);
-        final double bottom = Math.pow((1 + monthlyInterestRate),totalMonthlyPayments) - 1;
+        final double bottom = Math.pow((1 + monthlyInterestRate), totalMonthlyPayments) - 1;
 
-        final double monthlyPayment = principal * (top/bottom);
+        final double monthlyPayment = principal * (top / bottom);
 
         return df2.format(monthlyPayment);
 
